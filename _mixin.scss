@@ -1,0 +1,8 @@
+
+//-------------------FUNCIONES----------------
+
+@mixin tamaño($with, $height) {
+    width: $with;
+    height: $height;
+    
+}

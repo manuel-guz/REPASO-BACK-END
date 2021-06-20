@@ -1,0 +1,25 @@
+
+
+body{
+    background-color: $blue_sass;
+}
+
+.red{
+    border: 10px, $gray_sass;
+    margin-bottom: 20px;
+    background-color: $fondo_sass;
+}
+
+.rednueva{
+    @extend.red;            // se utiliza para heredar el estilo de la clase red en este caso
+    color: rgb(185, 8, 8);
+}
+
+
+
+.box{
+
+    @include tamaño(700px, 400px);
+    background-color: white;
+     
+}

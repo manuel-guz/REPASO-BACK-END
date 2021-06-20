@@ -1,0 +1,32 @@
+
+/*
+Para iniciar SASS primero hay que instalarlo junto con nodemon para que 
+lo valla compilando al css ----> npm node-sass nodemon --save-dev
+
+Luego hay que hagregar codigo en la zona de scripts para que la compilación de
+SASS a CSS se realicen del archivo master.scss al estilos.css--->
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css":"node-sass --include scss master.scss estilos.css",  ---> aca se le pide a node-sass que incluya lo que se codea en master.scss en estilos.css luego de haber sido compilado
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""           ---> aca se le pide a nodemon que este compilando el .scss todo el tiempo para ver el compilado css en tiempo real
+},
+
+*/
+
+
+// para importar SASS de otras carpetas::after
+
+
+@import "variables";   // importo todas las variables al master
+@import "mixin";       // importa las funciones mixin
+
+//---------------------SE IMPORTAN TODOS LOS COMPONENTES DE LA PAGINA WEB---------------------
+@import "navegacion"; // se importa desde otros archivos scss porque el master.scss es el que tiene el script que compila  en css y lo guarda en estilos.css
+@import "parrafos";     // NO ES NECESARIO IMPORTAR _variables  en cada componente
+@import "footer";
+@import "body";
+
+
+
+
