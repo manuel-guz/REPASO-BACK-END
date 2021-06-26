@@ -5,6 +5,9 @@ console.log('es una app con NODE');
 const mysql = require('mysql2'); // requiere el MODULO mysql que descargó de NPM, se llama a travez de la variable mysql, Se utiliza mysql2 por cuestiones de autenticación
 
 const http= require('http'); // requiere el MODULO HTTP para crear un servidor web
+
+
+const mysqlConfig = require('./config/config'); // con esto se importa los datos de la bbdd de config.js  
 //_________________________________________________________________________________________________________________
 
 
@@ -13,12 +16,8 @@ const http= require('http'); // requiere el MODULO HTTP para crear un servidor w
 
 
 //------------------------------CREACIÓN DE OONEXIONES Y SERVIDORES------------------------------------------------------------------
-const connection = mysql.createConnection({  // metodo que crea la conexion y pide algunos argumentos
-  host     : 'localhost',                  // localhost esta en la computadora es el workbench local
-  user     : 'root',                        // usuario de workbench
-  password : 'Telechubi646',                //pass de workbench
-  database : 'utn'                          //base de datos de workbench
-});
+// metodo que crea la conexion y pide algunos argumentos
+const connection = mysql.createConnection(mysqlConfig);//ingresa la info de la bbdd que esta en la carpeta config/config.js
 
 const server= http.createServer((request, response)=> {  //Aca se crea en la const server, un servidor http (web) que requiere de un request listener que es la arrow function que toma como parametro a request (por si necesita datos del cliente) y response(lo que se le va a responder al cliente cuando le pregunte algo al server).
 
@@ -56,7 +55,7 @@ const server= http.createServer((request, response)=> {  //Aca se crea en la con
 connection.connect(function(error){                         // levanta la conexión  contra workbench
     if (error) {
         console.log("se produjo un error" + error.stack ); //error.stack devuelve el error en varios arrays apilados
-        return;                                            // para que la funcion devuelda el error
+        return;    // corta la ejecución del programa y no deja que salga el console.log siguiente
     }else{
         console.log("La conexion fue exitosa!");  //si todo ssale bien,  se manda por console un ok
     }

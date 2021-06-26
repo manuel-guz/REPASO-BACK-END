@@ -1,14 +1,9 @@
 const mysql = require('mysql2');
 const http= require('http');
 const { log } = require('console');
-
-
-const connection = mysql.createConnection({  // metodo que crea la conexion y pide algunos argumentos
-    host     : 'localhost',                  // localhost esta en la computadora es el workbench local
-    user     : 'root',                        // usuario de workbench
-    password : 'Telechubi646',                //pass de workbench
-    database : 'utn'                          //base de datos de workbench
-});
+const mysqlConfig= require('./config/config');  // trae la info del archivo config.js
+// metodo que crea la conexion y pide algunos argumentos
+const connection = mysql.createConnection(mysqlConfig);// ingresa la info de la bbdd que esta en la carpeta config/config.js
 
 connection.connect(function(error){                         // levanta la conexión  contra workbench
     if (error) {
